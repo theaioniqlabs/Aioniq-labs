@@ -69,19 +69,19 @@ export const Button: React.FC<ButtonProps> = ({
     style: baseStyles,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
-    ...props,
   }
 
   if (as === 'a' && href) {
+    const { disabled, form, formAction, ...anchorProps } = props as React.ButtonHTMLAttributes<HTMLButtonElement>
     return (
-      <a href={href} {...(commonProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <a href={href} {...commonProps} {...(anchorProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
         {children}
       </a>
     )
   }
 
   return (
-    <button type="button" {...(commonProps as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button type="button" {...commonProps} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
       {children}
     </button>
   )

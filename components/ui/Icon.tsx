@@ -30,7 +30,7 @@ export const Icon: React.FC<IconProps> = ({
         : 'Arrow'
 
   // Fallback SVG icons if image fails to load
-  const fallbackIcons: Record<IconType, string> = {
+  const fallbackIcons: Record<IconType, React.ReactElement> = {
     hamburger: (
       <svg
         width={iconSize}
@@ -78,6 +78,8 @@ export const Icon: React.FC<IconProps> = ({
     ),
   }
 
+  const [useFallback, setUseFallback] = React.useState(false)
+
   return (
     <span
       className={`inline-flex items-center justify-center ${className}`}
@@ -87,21 +89,19 @@ export const Icon: React.FC<IconProps> = ({
       }}
       aria-hidden="true"
     >
-      <Image
-        src={iconPath}
-        alt=""
-        width={iconSize}
-        height={iconSize}
-        onError={(e) => {
-          // Fallback to inline SVG if image fails
-          const target = e.target as HTMLImageElement
-          target.style.display = 'none'
-          const parent = target.parentElement
-          if (parent) {
-            parent.innerHTML = fallbackIcons[type]
-          }
-        }}
-      />
+      {useFallback ? (
+        fallbackIcons[type]
+      ) : (
+        <Image
+          src={iconPath}
+          alt=""
+          width={iconSize}
+          height={iconSize}
+          onError={() => {
+            setUseFallback(true)
+          }}
+        />
+      )}
     </span>
   )
 }
