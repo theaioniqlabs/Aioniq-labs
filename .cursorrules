@@ -1,0 +1,7 @@
+# Cursor rules (screenshots-first)
+
+- ALWAYS request a screenshot or URL for the target section before editing.
+- If an image path is local, expect it under /mnt/data/assets/ or /mnt/data/.
+- For UI effect libraries (e.g., three.js backgrounds): include install instructions in PLAN (e.g., pnpm add three).
+- When mapping pixels->tokens, produce a small mapping table in the PLAN.
+- MODE must never be skipped.

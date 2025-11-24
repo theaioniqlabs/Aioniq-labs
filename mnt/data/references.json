@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "screenshot": "/mnt/data/Untitled-1.jpg",
+    "badge": "Creative Technology Studio",
+    "headline": "A Human-first Intelligent Design Systems",
+    "highlightedWord": "Intelligent",
+    "subtext": "with 40000000+ reach and start getting feedbacks right now",
+    "cta_primary": {
+      "label": "Start Project",
+      "href": "#",
+      "variant": "primary"
+    },
+    "cta_secondary": {
+      "label": "View Our Work",
+      "href": "#",
+      "variant": "secondary"
+    },
+    "avatars": [
+      {
+        "alt": "Team member 1",
+        "name": "John Doe"
+      },
+      {
+        "alt": "Team member 2",
+        "name": "Jane Smith"
+      },
+      {
+        "alt": "Team member 3",
+        "name": "Alex Johnson"
+      }
+    ]
+  },
+  "effects": {
+    "hero_background": "https://reactbits.dev/backgrounds/liquid-ether",
+    "install": "pnpm add three"
+  },
+  "metadata": {
+    "created": "2024-01-01",
+    "screenshot_resolution": "Desktop viewport",
+    "design_tokens_source": "Screenshot pixel analysis"
+  }
+}
+
