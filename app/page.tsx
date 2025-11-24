@@ -23,13 +23,12 @@ export default function Home() {
   return (
     <main>
       <Hero
-        banner={{
-          srcSet: {
-            '1x': '/assets/placeholders/hero_banner_placeholder@1x.webp',
-            '2x': '/assets/placeholders/hero_banner_placeholder@2x.webp',
-          },
-          alt: 'Hero banner',
-        }}
+        bannerImages={[
+          '/assets/banners/Sliding-banner-1.png',
+          '/assets/banners/Sliding-banner-2.png',
+          'placeholder',
+        ]}
+        bannerAlt="Hero banner"
         badge="Creative Technology Studio"
         headline="A Human-first Intelligent Design Systems"
         highlightedWord="Intelligent"
