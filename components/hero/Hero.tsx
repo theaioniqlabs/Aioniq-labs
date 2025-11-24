@@ -4,6 +4,7 @@ import React from 'react'
 import { AvatarGroup, Avatar } from '@/components/ui/AvatarGroup'
 import { Button } from '@/components/ui/Button'
 import { Banner } from '@/components/ui/Banner'
+import { AuroraBackground } from '@/components/ui/aurora-background'
 import { tokens } from '@/design/tokens'
 
 export interface HeroCTA {
@@ -44,13 +45,23 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section
-      className="container mx-auto px-4 bg-white"
+      className="w-full relative"
       style={{
         paddingTop: `var(--spacing-section-vertical-desktop)`, // 80px
         paddingBottom: `var(--spacing-section-vertical-desktop)`, // 80px
       }}
       aria-label="Hero section"
     >
+      {/* Aurora Background Layer */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <AuroraBackground
+          className="absolute inset-0"
+          showRadialGradient={true}
+        />
+      </div>
+
+      {/* Content Layer */}
+      <div className="relative z-10 container mx-auto px-4">
       {/* Container 1: Banner */}
       {bannerImages && bannerImages.length > 0 && (
         <div
@@ -184,14 +195,15 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
       </div>
 
-      {/* Hidden reference to screenshot for documentation */}
-      {screenshotRef && (
-        <meta
-          name="hero-screenshot-ref"
-          content={screenshotRef}
-          hidden
-        />
-      )}
+        {/* Hidden reference to screenshot for documentation */}
+        {screenshotRef && (
+          <meta
+            name="hero-screenshot-ref"
+            content={screenshotRef}
+            hidden
+          />
+        )}
+      </div>
     </section>
   )
 }

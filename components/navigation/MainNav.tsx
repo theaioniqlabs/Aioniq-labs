@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { gsap } from 'gsap'
 import { Icon } from '@/components/ui/Icon'
@@ -82,6 +82,7 @@ export const MainNav: React.FC<MainNavProps> = ({
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const navRef = useRef<HTMLDivElement | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const tlRef = useRef<gsap.core.Timeline | null>(null)
 
@@ -212,6 +213,30 @@ export const MainNav: React.FC<MainNavProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded])
 
+  // Click outside to close menu
+  useEffect(() => {
+    if (!isExpanded) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        // Click is outside the navigation container, close menu
+        const tl = tlRef.current
+        if (tl) {
+          setIsHamburgerOpen(false)
+          tl.eventCallback('onReverseComplete', () => setIsExpanded(false))
+          tl.reverse()
+        }
+      }
+    }
+
+    // Use mousedown to catch clicks before they bubble and to avoid conflicts with link clicks
+    document.addEventListener('mousedown', handleClickOutside)
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isExpanded])
+
   const toggleMenu = () => {
     if (!isExpanded) {
       // Create timeline if it doesn't exist
@@ -244,6 +269,7 @@ export const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <div
+      ref={containerRef}
       className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1.2em] md:top-[2em] ${className}`}
     >
       <nav
