@@ -22,6 +22,7 @@ const mockAvatars: Avatar[] = [
 export default function Home() {
   return (
     <main>
+      <LandingAccordionItem />
       <Hero
         bannerImages={[
           '/assets/banners/Sliding-banner-1.png',
@@ -48,7 +49,6 @@ export default function Home() {
         ]}
         screenshotRef="/mnt/data/9309a2b0-3a7c-4372-8cbc-3030a29cc646.png"
       />
-      <LandingAccordionItem />
       <Skiper41 />
     </main>
   )
