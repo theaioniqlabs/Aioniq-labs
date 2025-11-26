@@ -25,7 +25,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MainNav />
+        <section className="relative w-full">
+          <MainNav />
+        </section>
         {children}
       </body>
     </html>

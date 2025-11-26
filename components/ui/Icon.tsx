@@ -92,15 +92,15 @@ export const Icon: React.FC<IconProps> = ({
       {useFallback ? (
         fallbackIcons[type]
       ) : (
-        <Image
-          src={iconPath}
-          alt=""
-          width={iconSize}
-          height={iconSize}
+      <Image
+        src={iconPath}
+        alt=""
+        width={iconSize}
+        height={iconSize}
           onError={() => {
             setUseFallback(true)
-          }}
-        />
+        }}
+      />
       )}
     </span>
   )
