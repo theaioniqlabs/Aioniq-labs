@@ -5,6 +5,7 @@ import { AvatarGroup, Avatar } from '@/components/ui/AvatarGroup'
 import { Button } from '@/components/ui/Button'
 import { Banner } from '@/components/ui/Banner'
 import { AuroraBackground } from '@/components/ui/aurora-background'
+import MagicBento from '@/components/ui/MagicBento'
 import { tokens } from '@/design/tokens'
 
 export interface HeroCTA {
@@ -45,17 +46,18 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section
-      className="w-full relative"
+      className="w-full relative overflow-x-hidden"
       style={{
         paddingTop: `var(--spacing-section-vertical-desktop)`, // 80px
         paddingBottom: `var(--spacing-section-vertical-desktop)`, // 80px
+        width: '100vw', // Explicit full viewport width
       }}
       aria-label="Hero section"
     >
       {/* Aurora Background Layer */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 w-screen">
         <AuroraBackground
-          className="absolute inset-0"
+          className="absolute inset-0 w-full"
           showRadialGradient={true}
         />
       </div>
@@ -78,10 +80,29 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
         )}
 
-      {/* Container 2: Content and Buttons - Split 50-50 */}
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* Left Container: All Content */}
-        <div className="w-full md:w-1/2 flex flex-col items-start">
+      {/* Magic Bento Grid - Below Banner */}
+      <div
+        style={{
+          marginTop: 'var(--spacing-banner-gap-bottom)',
+          marginBottom: 'var(--spacing-section-vertical-desktop)',
+        }}
+      >
+        <MagicBento
+          textAutoHide={true}
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          enableTilt={false}
+          enableMagnetism={true}
+          clickEffect={true}
+          spotlightRadius={300}
+          particleCount={12}
+          glowColor="155, 123, 255"
+        />
+      </div>
+
+       {/* Container 2: Content and Buttons - Full Width */}
+       <div className="w-full flex flex-col items-start">
             {/* Badge */}
             {badge && (
               <div
@@ -188,12 +209,6 @@ export const Hero: React.FC<HeroProps> = ({
               ))}
             </div>
           </div>
-
-        {/* Right Container: Placeholder */}
-        <div className="w-full md:w-1/2 bg-gray-200 rounded-lg min-h-[400px]">
-          {/* Empty placeholder */}
-        </div>
-      </div>
 
       {/* Hidden reference to screenshot for documentation */}
       {screenshotRef && (

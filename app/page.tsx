@@ -1,7 +1,6 @@
 import { Hero } from '@/components/hero/Hero'
 import type { Avatar } from '@/components/ui/AvatarGroup'
 import { LandingAccordionItem } from '@/components/ui/interactive-image-accordion'
-import { Skiper41 } from '@/components/ui/progressive-blur'
 
 // Mock avatars - replace with actual avatar images when available
 const mockAvatars: Avatar[] = [
@@ -22,7 +21,6 @@ const mockAvatars: Avatar[] = [
 export default function Home() {
   return (
     <main>
-      <LandingAccordionItem />
       <Hero
         bannerImages={[
           '/assets/banners/Sliding-banner-1.png',
@@ -49,7 +47,7 @@ export default function Home() {
         ]}
         screenshotRef="/mnt/data/9309a2b0-3a7c-4372-8cbc-3030a29cc646.png"
       />
-      <Skiper41 />
+      <LandingAccordionItem />
     </main>
   )
 }
