@@ -4,7 +4,6 @@ import React from 'react'
 import { AvatarGroup, Avatar } from '@/components/ui/AvatarGroup'
 import { Button } from '@/components/ui/Button'
 import { Banner } from '@/components/ui/Banner'
-import { AuroraBackground } from '@/components/ui/aurora-background'
 import MagicBento from '@/components/ui/MagicBento'
 import { tokens } from '@/design/tokens'
 
@@ -54,14 +53,6 @@ export const Hero: React.FC<HeroProps> = ({
       }}
       aria-label="Hero section"
     >
-      {/* Aurora Background Layer */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 w-screen">
-        <AuroraBackground
-          className="absolute inset-0 w-full"
-          showRadialGradient={true}
-        />
-      </div>
-
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-4">
       {/* Container 1: Banner */}

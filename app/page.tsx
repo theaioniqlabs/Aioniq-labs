@@ -28,7 +28,7 @@ export default function Home() {
           buttonText: 'Read more',
           buttonHref: '#',
         }}
-        headline="Build apps faster with ui components"
+        headline="A Human-first Intelligent Design Systems"
         description="Build sleek, consistent UIs without wrestling with design systems, our components handle the heavy lifting so you can ship faster."
         ctas={[
           {
