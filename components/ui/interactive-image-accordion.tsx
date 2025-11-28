@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { PageContainer } from './PageContainer'
 
 // --- Data for the image accordion ---
 interface AccordionItemData {
@@ -113,15 +114,13 @@ export function LandingAccordionItem() {
       backgroundColor: 'var(--color-background-primary)',
     }}>
       <section 
-        className="container mx-auto px-4 py-12 md:py-24"
+        className="py-12 md:py-24"
         style={{
           paddingTop: 'var(--spacing-section-vertical-mobile)',
           paddingBottom: 'var(--spacing-section-vertical-mobile)',
-          paddingLeft: 'var(--spacing-container-padding-mobile)',
-          paddingRight: 'var(--spacing-container-padding-mobile)',
-          maxWidth: 'var(--spacing-container-max-width-xl)',
         }}
       >
+        <PageContainer>
         {/* Image Accordion */}
         <div className="flex justify-center">
           <div 
@@ -141,6 +140,7 @@ export function LandingAccordionItem() {
             ))}
           </div>
         </div>
+        </PageContainer>
       </section>
     </div>
   )

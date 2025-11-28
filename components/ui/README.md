@@ -43,7 +43,7 @@ shadcn/ui components use CSS variables that map to AiONIQ tokens:
 ### Colors
 - `--background` → `--color-background-primary` (#FFFFFF)
 - `--foreground` → `--color-text-primary` (#1A1A1A)
-- `--primary` → `--color-brand-primary` (#9B7BFF)
+- `--primary` → `--color-brand-primary` (#1F2937)
 - `--secondary` → `--color-background-secondary` (#F9FAFB)
 - `--muted` → `--color-background-tertiary` (#F3F4F6)
 - `--border` → `--color-button-secondary-border` (#D1D5DB)

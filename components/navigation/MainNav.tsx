@@ -43,7 +43,7 @@ export const MainNav: React.FC<MainNavProps> = ({
   items = [
     {
       label: 'About',
-      bgColor: '#2D1B4E',
+      bgColor: '#1F2937',
       textColor: '#FFFFFF',
       links: [
         { label: 'Company', href: '#', ariaLabel: 'Go to Company page' },
@@ -52,7 +52,7 @@ export const MainNav: React.FC<MainNavProps> = ({
     },
     {
       label: 'Projects',
-      bgColor: '#3D2B5E',
+      bgColor: '#1F2937',
       textColor: '#FFFFFF',
       links: [
         { label: 'Featured', href: '#', ariaLabel: 'Go to Featured projects' },
@@ -61,7 +61,7 @@ export const MainNav: React.FC<MainNavProps> = ({
     },
     {
       label: 'Contact',
-      bgColor: '#4D3B6E',
+      bgColor: '#1F2937',
       textColor: '#FFFFFF',
       links: [
         { label: 'Email', href: '#', ariaLabel: 'Contact via Email' },

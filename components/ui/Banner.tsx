@@ -81,9 +81,6 @@ export const Banner: React.FC<BannerProps> = ({
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 1120px"
             className="object-cover"
             priority={priority && index === 0}
-            style={{
-              objectFit: 'cover',
-            }}
           />
         </div>
       )
@@ -93,14 +90,9 @@ export const Banner: React.FC<BannerProps> = ({
 
   return (
     <div
-      className={`relative w-full overflow-hidden ${className}`}
+      className={`relative w-full h-full overflow-hidden ${className}`}
       style={{
-        height: 'var(--spacing-banner-height-desktop)',
-        minHeight: '300px',
-        borderRadius: 'var(--radii-banner-default)',
-        boxShadow: 'var(--shadow-banner)',
-        position: 'relative',
-        backgroundColor: '#F3F4F6', // Fallback background while image loads
+        borderRadius: 'inherit', // Inherit border radius from parent card
       }}
       aria-label={`${alt} - Carousel with ${images.length} images`}
     >

@@ -339,9 +339,9 @@ export const tokens = {
   },
   colors: {
     brand: {
-      primary: '#9B7BFF', // Purple highlight for "Intelligent" - sampled from screenshot
-      primaryDark: '#7C3AED',
-      primaryLight: '#A78BFA',
+      primary: '#1F2937', // Dark gray brand color
+      primaryDark: '#1F2937',
+      primaryLight: '#1F2937',
     },
     text: {
       primary: '#1A1A1A', // Sampled from screenshot (was #000000)
@@ -376,11 +376,11 @@ export const tokens = {
     },
     nav: {
       overlay: {
-        bg: '#1A0B2E', // Dark purple overlay background
+        bg: '#1F2937', // Dark gray overlay background
       },
       card: {
-        bg: '#2D1B4E', // Card background (slightly lighter purple)
-        hover: '#3D2B5E', // Card hover state
+        bg: '#1F2937', // Card background
+        hover: '#1F2937', // Card hover state
       },
       shadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
     },

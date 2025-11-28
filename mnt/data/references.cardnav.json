@@ -32,11 +32,11 @@
       "shadow": "0 2px 8px rgba(0, 0, 0, 0.1)"
     },
     "overlay": {
-      "backgroundColor": "#1A0B2E",
+      "backgroundColor": "#1F2937",
       "paddingTop": "120px"
     },
     "cards": {
-      "backgroundColor": "#2D1B4E",
+      "backgroundColor": "#1F2937",
       "borderRadius": "16px",
       "padding": "32px",
       "gap": "48px"

@@ -216,9 +216,9 @@
   --typography-small-subtle-weight: 400;
 
   /* Colors - Brand */
-  --color-brand-primary: #9B7BFF;
-  --color-brand-primary-dark: #7C3AED;
-  --color-brand-primary-light: #A78BFA;
+  --color-brand-primary: #1F2937;
+  --color-brand-primary-dark: #1F2937;
+  --color-brand-primary-light: #1F2937;
 
   /* Colors - Text */
   --color-text-primary: #1A1A1A;
@@ -227,7 +227,7 @@
   --color-text-inverse: #FFFFFF;
 
   /* Colors - Background */
-  --color-background-primary: #FFFFFF;
+  --color-background-primary: #FAFAFA;
   --color-background-secondary: #F9FAFB;
   --color-background-tertiary: #F3F4F6;
 
@@ -248,9 +248,9 @@
   --color-avatar-placeholder: #FFDAB9;
 
   /* Colors - Nav */
-  --nav-overlay-bg: #1A0B2E;
-  --nav-card-bg: #2D1B4E;
-  --nav-card-hover: #3D2B5E;
+  --nav-overlay-bg: #1F2937;
+  --nav-card-bg: #1F2937;
+  --nav-card-hover: #1F2937;
   --nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   /* Radii */
@@ -270,7 +270,7 @@
   --background: 0 0% 100%; /* Maps to --color-background-primary (#FFFFFF) */
   --foreground: 0 0% 10%;   /* Maps to --color-text-primary (#1A1A1A) */
   
-  --primary: 260 100% 80%;  /* Maps to --color-brand-primary (#9B7BFF) */
+  --primary: 215 28% 17%;  /* Maps to --color-brand-primary (#1F2937) */
   --primary-foreground: 0 0% 100%; /* Maps to --color-text-inverse (#FFFFFF) */
   
   --secondary: 0 0% 98%;    /* Maps to --color-background-secondary (#F9FAFB) */
@@ -279,7 +279,7 @@
   --muted: 0 0% 95%;        /* Maps to --color-background-tertiary (#F3F4F6) */
   --muted-foreground: 0 0% 45%; /* Maps to --color-text-secondary (#6B7280) */
   
-  --accent: 260 100% 85%;    /* Maps to --color-brand-primary-light (#A78BFA) */
+  --accent: 215 28% 17%;    /* Maps to --color-brand-primary-light (#1F2937) */
   --accent-foreground: 0 0% 10%; /* Maps to --color-text-primary (#1A1A1A) */
   
   --destructive: 0 84% 60%; /* Standard red for destructive actions */
@@ -287,7 +287,7 @@
   
   --border: 0 0% 82%;       /* Maps to --color-button-secondary-border (#D1D5DB) */
   --input: 0 0% 82%;        /* Maps to --color-button-secondary-border (#D1D5DB) */
-  --ring: 260 100% 80%;     /* Maps to --color-brand-primary (#9B7BFF) */
+  --ring: 215 28% 17%;     /* Maps to --color-brand-primary (#1F2937) */
   
   --popover: 0 0% 100%;     /* Maps to --color-background-primary (#FFFFFF) */
   --popover-foreground: 0 0% 10%; /* Maps to --color-text-primary (#1A1A1A) */
@@ -557,6 +557,36 @@ h1, h2, h3, h4, h5, h6 {
   .text-small-subtle {
     font-size: var(--typography-small-subtle-size-mobile);
     line-height: var(--typography-small-subtle-line-height-mobile);
+  }
+}
+
+/* Grid System Utilities */
+/* Mobile (390px): 4-column implicit grid */
+.grid-mobile {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Desktop (1440px): 12-column implicit grid */
+@media (min-width: 1024px) {
+  .grid-desktop {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Combined: Mobile 4-column, Desktop 12-column */
+.grid-page {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .grid-page {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
 

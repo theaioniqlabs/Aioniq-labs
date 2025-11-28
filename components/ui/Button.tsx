@@ -49,30 +49,42 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    const element = e.currentTarget
     if (isPrimary) {
-      e.currentTarget.style.backgroundColor = 'var(--color-button-primary-hover)'
+      element.style.setProperty('background-color', 'var(--color-button-primary-hover)', 'important')
     } else {
-      e.currentTarget.style.backgroundColor = 'var(--color-button-secondary-hover)'
+      element.style.setProperty('background-color', 'var(--color-button-secondary-hover)', 'important')
     }
   }
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    const element = e.currentTarget
     if (isPrimary) {
-      e.currentTarget.style.backgroundColor = 'var(--color-button-primary-bg)'
+      element.style.setProperty('background-color', 'var(--color-button-primary-bg)', 'important')
     } else {
-      e.currentTarget.style.backgroundColor = 'var(--color-button-secondary-bg)'
+      element.style.setProperty('background-color', 'var(--color-button-secondary-bg)', 'important')
     }
+  }
+
+  // Merge custom style with base styles - ensure backgroundColor is preserved
+  const mergedStyles: React.CSSProperties = {
+    ...baseStyles,
+    ...(props.style || {}),
+    // Ensure backgroundColor is always set correctly (override any style prop that might set it)
+    backgroundColor: isPrimary
+      ? 'var(--color-button-primary-bg)'
+      : 'var(--color-button-secondary-bg)',
   }
 
   const commonProps = {
     className: `focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black ${className}`,
-    style: baseStyles,
+    style: mergedStyles,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   }
 
   if (as === 'a' && href) {
-    const { disabled, form, formAction, ...anchorProps } = props as React.ButtonHTMLAttributes<HTMLButtonElement>
+    const { disabled, form, formAction, style, ...anchorProps } = props as React.ButtonHTMLAttributes<HTMLButtonElement>
     return (
       <a href={href} {...commonProps} {...(anchorProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
         {children}
@@ -80,8 +92,9 @@ export const Button: React.FC<ButtonProps> = ({
     )
   }
 
+  const { style, ...buttonProps } = props as React.ButtonHTMLAttributes<HTMLButtonElement>
   return (
-    <button type="button" {...commonProps} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button type="button" {...commonProps} {...buttonProps}>
       {children}
     </button>
   )

@@ -143,19 +143,19 @@ pnpm dlx shadcn-ui@latest add popover
 /* shadcn/ui color tokens mapped to AiONIQ tokens */
 --background: var(--color-background-primary);        /* #FFFFFF */
 --foreground: var(--color-text-primary);               /* #1A1A1A */
---primary: var(--color-brand-primary);                 /* #9B7BFF */
+--primary: var(--color-brand-primary);                 /* #1F2937 */
 --primary-foreground: var(--color-text-inverse);      /* #FFFFFF */
 --secondary: var(--color-background-secondary);       /* #F9FAFB */
 --secondary-foreground: var(--color-text-primary);    /* #1A1A1A */
 --muted: var(--color-background-tertiary);            /* #F3F4F6 */
 --muted-foreground: var(--color-text-secondary);      /* #6B7280 */
---accent: var(--color-brand-primary-light);            /* #A78BFA */
+--accent: var(--color-brand-primary-light);            /* #1F2937 */
 --accent-foreground: var(--color-text-primary);       /* #1A1A1A */
 --destructive: #ef4444;                                 /* Standard red */
 --destructive-foreground: var(--color-text-inverse);  /* #FFFFFF */
 --border: var(--color-button-secondary-border);        /* #D1D5DB */
 --input: var(--color-button-secondary-border);         /* #D1D5DB */
---ring: var(--color-brand-primary);                    /* #9B7BFF */
+--ring: var(--color-brand-primary);                    /* #1F2937 */
 ```
 
 **Spacing & Radii**:
@@ -384,7 +384,7 @@ theme: {
 /* shadcn/ui color tokens (mapped to AiONIQ tokens) */
 --background: 0 0% 100%; /* Maps to --color-background-primary */
 --foreground: 0 0% 10%;   /* Maps to --color-text-primary */
---primary: 260 100% 80%;  /* Maps to --color-brand-primary (#9B7BFF) */
+--primary: 215 28% 17%;  /* Maps to --color-brand-primary (#1F2937) */
 --primary-foreground: 0 0% 100%; /* Maps to --color-text-inverse */
 /* ... additional mappings */
 ```

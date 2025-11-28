@@ -46,7 +46,7 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12
 const DEFAULT_SPOTLIGHT_RADIUS = 300
-// Convert AiONIQ brand primary #9B7BFF to RGB
+// Convert AiONIQ brand primary #1F2937 to RGB
 const DEFAULT_GLOW_COLOR = '155, 123, 255'
 const MOBILE_BREAKPOINT = 768
 

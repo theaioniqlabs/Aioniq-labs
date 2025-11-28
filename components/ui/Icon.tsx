@@ -86,6 +86,7 @@ export const Icon: React.FC<IconProps> = ({
       style={{
         width: `var(--icon-size-${size})`,
         height: `var(--icon-size-${size})`,
+        color: 'rgba(0, 0, 0, 0.8)',
       }}
       aria-hidden="true"
     >
@@ -97,6 +98,10 @@ export const Icon: React.FC<IconProps> = ({
         alt=""
         width={iconSize}
         height={iconSize}
+        style={{
+          opacity: 0.8,
+          filter: 'brightness(0)',
+        }}
           onError={() => {
             setUseFallback(true)
         }}

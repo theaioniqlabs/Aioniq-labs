@@ -4,7 +4,7 @@ import React from 'react'
 import { AvatarGroup, Avatar } from '@/components/ui/AvatarGroup'
 import { Button } from '@/components/ui/Button'
 import { Banner } from '@/components/ui/Banner'
-import MagicBento from '@/components/ui/MagicBento'
+import { PageContainer } from '@/components/ui/PageContainer'
 import { tokens } from '@/design/tokens'
 
 export interface HeroCTA {
@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({
       aria-label="Hero section"
     >
       {/* Content Layer */}
-      <div className="relative z-10 container mx-auto px-4">
+      <PageContainer className="relative z-10">
       {/* Container 1: Banner */}
       {bannerImages && bannerImages.length > 0 && (
           <div
@@ -70,27 +70,6 @@ export const Hero: React.FC<HeroProps> = ({
             />
           </div>
         )}
-
-      {/* Magic Bento Grid - Below Banner */}
-      <div
-        style={{
-          marginTop: 'var(--spacing-banner-gap-bottom)',
-          marginBottom: 'var(--spacing-section-vertical-desktop)',
-        }}
-      >
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={false}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          glowColor="155, 123, 255"
-        />
-      </div>
 
        {/* Container 2: Content and Buttons - Full Width */}
        <div className="w-full flex flex-col items-start">
@@ -136,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({
                     style={
                       isHighlighted
                         ? {
-                            color: 'var(--color-brand-primary)', // #9B7BFF
+                            color: 'var(--color-brand-primary)', // #1F2937
                           }
                         : {}
                     }
@@ -209,7 +188,7 @@ export const Hero: React.FC<HeroProps> = ({
           hidden
         />
       )}
-      </div>
+      </PageContainer>
     </section>
   )
 }

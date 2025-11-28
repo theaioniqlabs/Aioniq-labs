@@ -34,3 +34,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# archive files with sensitive data
+docs/archive/figma-web/Inspects.md
+

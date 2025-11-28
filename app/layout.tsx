@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import { MainNav } from '@/components/navigation/MainNav'
+import { Design5Nav } from '@/components/navigation/Design5Nav'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { TextBanner } from '@/components/ui/TextBanner'
 
 export const metadata: Metadata = {
   title: 'AiONIQ Labs - A Human-first Intelligent Design Systems',
@@ -13,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Preload Inter variable font for headings (per BEST_FONT_SYSTEM.md) */}
         <link
@@ -25,10 +27,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <section className="relative w-full">
-          <MainNav />
-        </section>
-        {children}
+        <ThemeProvider>
+          <section className="relative w-full">
+            <TextBanner />
+            <Design5Nav />
+          </section>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

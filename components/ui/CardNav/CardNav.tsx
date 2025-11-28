@@ -169,7 +169,7 @@ export const CardNav: React.FC<CardNavProps> = ({
       ref={overlayRef}
       className={`fixed inset-0 z-50 ${className}`}
       style={{
-        backgroundColor: 'var(--nav-overlay-bg)', // #1A0B2E
+        backgroundColor: 'var(--nav-overlay-bg)', // #1F2937
         paddingTop: 'var(--nav-overlay-padding-top)', // 120px
         paddingLeft: 'var(--spacing-container-padding-mobile)', // 24px
         paddingRight: 'var(--spacing-container-padding-mobile)', // 24px
