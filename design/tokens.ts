@@ -48,6 +48,8 @@ export const tokens = {
     },
     card: {
       padding: '32px',
+      paddingX: '32px',
+      paddingY: '32px',
       nav: {
         gap: '48px',
       },
@@ -353,6 +355,9 @@ export const tokens = {
       primary: '#FFFFFF',
       secondary: '#F9FAFB',
       tertiary: '#F3F4F6',
+    },
+    card: {
+      bg: '#EEF0F2',
     },
     button: {
       primary: {

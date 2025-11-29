@@ -1,7 +1,9 @@
+import { AboutBento } from '@/components/about/AboutBento'
+
 export default function How() {
   return (
-    <main>
-      {/* Blank page for How */}
+    <main className="w-full min-h-screen">
+      <AboutBento />
     </main>
   )
 }

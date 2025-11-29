@@ -1,6 +1,0 @@
-Design 1
-
-
-<div class="py-8 border-t border-b border-border"><p class="text-muted-foreground italic">"We don't just build websites. We architect digital ecosystems that elevate brands and empower users."</p></div>
-
-

@@ -37,3 +37,24 @@ next-env.d.ts
 # archive files with sensitive data
 docs/archive/figma-web/Inspects.md
 
+# screenshots and images (except public/assets)
+*.png
+*.jpg
+*.jpeg
+*.gif
+!public/assets/**/*.png
+!public/assets/**/*.jpg
+!public/assets/**/*.jpeg
+!public/assets/**/*.gif
+!public/assets/**/*.webp
+!public/assets/**/*.svg
+
+# PDF files
+*.pdf
+
+# Figma files
+*.fig
+
+# reference/archive data folder
+/mnt/data/
+

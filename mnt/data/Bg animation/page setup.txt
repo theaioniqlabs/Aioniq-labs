@@ -1,9 +1,0 @@
-Mobile (390px)
-4-column implicit grid (mentioned in your specs)
-Most content uses 1 column layouts for simplicity on small screens
-Stats/compact items use 2 columns: `grid-cols-2`
-
-Desktop (1440px)  
-12-column implicit grid (mentioned in your specs)
-80px margins on each side via `px-20` (20 × 4px = 80px)
-Max width: 1280px (defined in `PageContainer`)

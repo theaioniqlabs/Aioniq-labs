@@ -54,6 +54,11 @@ const config: Config = {
       fontSize: {
         // Will be extended via CSS variables from tokens
       },
+      fontFamily: {
+        'google-sans': ['"Google Sans Flex"', 'sans-serif'],
+        'heading': ['"Google Sans Flex"', 'sans-serif'],
+        'body': ['"Google Sans Flex"', 'sans-serif'],
+      },
       borderRadius: {
         lg: 'var(--radii-card-default)', // 12px
         md: 'var(--radii-button-default)', // 8px

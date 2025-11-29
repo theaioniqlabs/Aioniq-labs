@@ -59,6 +59,8 @@
 
   /* Spacing - Card */
   --card-padding: 32px;
+  --card-padding-x: 32px;
+  --card-padding-y: 32px;
   --card-nav-gap: 48px;
 
   /* Spacing - Badge */
@@ -104,8 +106,11 @@
   --typography-button-weight: 600;
 
   /* Typography - Font Family */
-  --typography-font-family-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --typography-font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --typography-font-family-body: "Google Sans Flex", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --typography-font-family-heading: "Google Sans Flex", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Google Sans Flex Variable Font Settings */
+  --google-sans-flex-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
 
   /* Typography - H2 */
   --typography-h2-size-desktop: 48px;
@@ -230,6 +235,9 @@
   --color-background-primary: #FAFAFA;
   --color-background-secondary: #F9FAFB;
   --color-background-tertiary: #F3F4F6;
+  
+  /* Colors - Card */
+  --color-card-bg: #EEF0F2;
 
   /* Colors - Button */
   --color-button-primary-bg: #1A1A1A;
@@ -289,6 +297,9 @@
   --input: 0 0% 82%;        /* Maps to --color-button-secondary-border (#D1D5DB) */
   --ring: 215 28% 17%;     /* Maps to --color-brand-primary (#1F2937) */
   
+  /* Border color (for inline styles) */
+  --color-border-default: #D1D5DB; /* Maps to --border */
+  
   --popover: 0 0% 100%;     /* Maps to --color-background-primary (#FFFFFF) */
   --popover-foreground: 0 0% 10%; /* Maps to --color-text-primary (#1A1A1A) */
   
@@ -321,20 +332,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings: Inter (Brand Identity) - per BEST_FONT_SYSTEM.md Option B */
+/* Headings: Google Sans Flex (Brand Identity) */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--typography-font-family-heading);
   font-weight: 600;
   line-height: 1.2;
 }
 
-/* Inter Variable Font - Self-hosted WOFF2 */
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter-var.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
+/* Google Sans Flex Variable Font Utility Class */
+.google-sans-flex {
+  font-family: "Google Sans Flex", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "ROND" 0;
 }
 
 /* Typography Utility Classes */
@@ -612,5 +626,33 @@ body.dg-scroll-lock {
   overflow: hidden !important;
   touch-action: none !important;
   overscroll-behavior: contain !important;
+}
+
+/* Card Utility Classes */
+.card-stack {
+  display: grid;
+  gap: var(--spacing-stack-gap-md);
+}
+
+.card-item {
+  background: var(--color-card-bg, var(--color-background-primary));
+  border-radius: var(--radii-card-default);
+  padding: var(--card-padding);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-item {
+    transition: none;
+  }
+  
+  .card-item:hover {
+    transform: none;
+  }
 }
 

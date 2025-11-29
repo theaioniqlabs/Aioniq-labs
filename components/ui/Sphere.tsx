@@ -167,6 +167,8 @@ export function Sphere({ width = 420, height = 420, className = '' }: SphereProp
     const sphere = sphereRef.current
 
     function draw() {
+      if (!context) return
+      
       animationFrameRef.current = window.requestAnimationFrame(draw)
 
       context.save()

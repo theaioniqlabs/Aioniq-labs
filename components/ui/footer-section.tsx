@@ -190,14 +190,9 @@ export function Footer({
                             }}
                           >
                             {link.icon && (
-                              <link.icon
-                                className="me-1 size-4"
-                                style={{
-                                  marginRight: 'var(--spacing-stack-gap-xs)',
-                                  width: '16px',
-                                  height: '16px',
-                                }}
-                              />
+                              <span style={{ marginRight: 'var(--spacing-stack-gap-xs)', display: 'inline-flex', width: '16px', height: '16px' }}>
+                                <link.icon className="w-4 h-4" />
+                              </span>
                             )}
                             {link.title}
                           </a>
@@ -228,7 +223,7 @@ function AnimatedContainer({ className, delay = 0.1, children, style }: ViewAnim
   const containerRef = React.useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Check for reduced motion preference
+    // Check for reduced motion preference using media query
     if (typeof window !== 'undefined') {
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
       setShouldReduceMotion(mediaQuery.matches)
@@ -260,17 +255,8 @@ function AnimatedContainer({ className, delay = 0.1, children, style }: ViewAnim
     }
   }, [shouldReduceMotion])
 
-  // Use motion if available
-  if (motion && useReducedMotion) {
-    const shouldReduce = useReducedMotion()
-    if (shouldReduce) {
-      return (
-        <div className={className} style={style}>
-          {children}
-        </div>
-      )
-    }
-
+  // Use motion if available and motion is not null
+  if (motion && !shouldReduceMotion) {
     return (
       <motion.div
         initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
@@ -285,15 +271,22 @@ function AnimatedContainer({ className, delay = 0.1, children, style }: ViewAnim
     )
   }
 
+  // Fallback: CSS animations or reduced motion
+  if (shouldReduceMotion) {
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    )
+  }
+
   // Fallback: CSS animations
   const animationStyle: React.CSSProperties = {
     ...style,
     opacity: isVisible ? 1 : 0,
     filter: isVisible ? 'blur(0px)' : 'blur(4px)',
     transform: isVisible ? 'translateY(0)' : 'translateY(-8px)',
-    transition: shouldReduceMotion
-      ? 'none'
-      : `opacity 0.8s ease ${delay}s, filter 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
+    transition: `opacity 0.8s ease ${delay}s, filter 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
   }
 
   return (

@@ -40,7 +40,7 @@ export interface ProductFeature {
 export interface ProductFeaturesProps {
   title?: string
   description?: string
-  features: ProductFeature[]
+  features?: ProductFeature[]
   className?: string
 }
 
