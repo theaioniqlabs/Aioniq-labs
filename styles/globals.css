@@ -602,3 +602,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Dome Gallery scroll lock */
+body.dg-scroll-lock {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  touch-action: none !important;
+  overscroll-behavior: contain !important;
+}
+

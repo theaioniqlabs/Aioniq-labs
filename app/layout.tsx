@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { Design5Nav } from '@/components/navigation/Design5Nav'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { TextBanner } from '@/components/ui/TextBanner'
+import { Footer } from '@/components/ui/footer-section'
 
 export const metadata: Metadata = {
   title: 'AiONIQ Labs - A Human-first Intelligent Design Systems',
@@ -33,6 +34,7 @@ export default function RootLayout({
             <Design5Nav />
           </section>
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

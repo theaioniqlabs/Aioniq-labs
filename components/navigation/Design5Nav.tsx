@@ -40,11 +40,11 @@ export const Design5Nav: React.FC<Design5NavProps> = ({
   // Default navigation items if not provided
   const defaultNavItems: NavItem[] = [
     { label: 'Home', href: '/', icon: Home, active: true },
-    { label: 'What', href: '#what', icon: Layers },
-    { label: 'Why', href: '#why', icon: Lightbulb },
-    { label: 'How', href: '#how', icon: Cpu },
-    { label: 'Who', href: '#who', icon: User },
-    { label: 'Where', href: '#where', icon: Mail },
+    { label: 'What', href: '/what', icon: Layers },
+    { label: 'Why', href: '/why', icon: Lightbulb },
+    { label: 'How', href: '/how', icon: Cpu },
+    { label: 'Who', href: '/who', icon: User },
+    { label: 'Where', href: '/where', icon: Mail },
   ]
 
   const items = navItems || defaultNavItems
