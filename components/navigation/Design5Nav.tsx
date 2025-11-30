@@ -6,9 +6,7 @@ import Image from 'next/image'
 import {
   Home,
   Layers,
-  Lightbulb,
   Cpu,
-  User,
   Mail,
 } from 'lucide-react'
 
@@ -40,10 +38,8 @@ export const Design5Nav: React.FC<Design5NavProps> = ({
   // Default navigation items if not provided
   const defaultNavItems: NavItem[] = [
     { label: 'Home', href: '/', icon: Home, active: true },
-    { label: 'What', href: '/what', icon: Layers },
-    { label: 'Why', href: '/why', icon: Lightbulb },
-    { label: 'How', href: '/how', icon: Cpu },
-    { label: 'Who', href: '/who', icon: User },
+    { label: 'Projects', href: '/what', icon: Layers },
+    { label: 'About', href: '/how', icon: Cpu },
     { label: 'Where', href: '/where', icon: Mail },
   ]
 
@@ -57,7 +53,10 @@ export const Design5Nav: React.FC<Design5NavProps> = ({
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between h-16">
+        <div 
+          className="flex items-center justify-between"
+          style={{ height: 'var(--spacing-nav-height)' }} // 80px
+        >
           {/* Logo Section */}
           <Link
             href="/"
@@ -69,7 +68,7 @@ export const Design5Nav: React.FC<Design5NavProps> = ({
               alt={logoAlt}
               width={135}
               height={38}
-              className="h-10 w-auto"
+              className="h-[30px] w-auto"
               priority
             />
           </Link>
@@ -102,7 +101,8 @@ export const Design5Nav: React.FC<Design5NavProps> = ({
 
       {/* Mobile/Tablet Bottom Navigation - Hidden on desktop */}
       <nav
-        className={`fixed bottom-0 left-0 right-0 flex lg:hidden items-center justify-around h-16 px-2 bg-background border-t border-border z-50 ${className}`}
+        className={`fixed bottom-0 left-0 right-0 flex lg:hidden items-center justify-around px-2 bg-background border-t border-border z-50 ${className}`}
+        style={{ height: 'var(--spacing-nav-height)' }} // 80px
         role="navigation"
         aria-label="Main navigation"
       >

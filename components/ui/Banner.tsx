@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
 
 export interface BannerProps {
@@ -15,6 +15,7 @@ export interface BannerProps {
  * Sliding Banner component - Auto-playing carousel with horizontal slide transitions
  * Used above hero section, cycles through multiple images
  * Respects prefers-reduced-motion (disables auto-play if reduced motion is preferred)
+ * Supports mouse drag and touch swipe for manual navigation
  */
 export const Banner: React.FC<BannerProps> = ({
   images,
@@ -25,6 +26,12 @@ export const Banner: React.FC<BannerProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStartX, setDragStartX] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const dragOffsetRef = useRef(0) // Ref to track current drag offset for useEffect
 
   // Check for prefers-reduced-motion
   useEffect(() => {
@@ -39,16 +46,113 @@ export const Banner: React.FC<BannerProps> = ({
     return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
 
-  // Auto-play functionality
+  // Auto-play functionality (pauses when user manually navigates)
   useEffect(() => {
-    if (prefersReducedMotion || images.length <= 1) return
+    if (prefersReducedMotion || images.length <= 1 || isPaused) return
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length)
     }, autoPlayInterval)
 
     return () => clearInterval(interval)
-  }, [images.length, autoPlayInterval, prefersReducedMotion])
+  }, [images.length, autoPlayInterval, prefersReducedMotion, isPaused])
+
+  // Resume auto-play after pause period
+  useEffect(() => {
+    if (!isPaused) return
+
+    const timer = setTimeout(() => {
+      setIsPaused(false)
+    }, 10000) // Resume after 10 seconds
+
+    return () => clearTimeout(timer)
+  }, [isPaused])
+
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (images.length <= 1) return
+    e.preventDefault()
+    setIsDragging(true)
+    setDragStartX(e.clientX)
+    setDragOffset(0)
+  }
+
+  // Global mouse move handler (attached to document for better drag experience)
+  useEffect(() => {
+    if (!isDragging) return
+
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      const offset = e.clientX - dragStartX
+      dragOffsetRef.current = offset
+      setDragOffset(offset)
+    }
+
+    const handleGlobalMouseUp = () => {
+      if (!isDragging) return
+      
+      const threshold = 50 // Minimum drag distance to trigger navigation
+      const dragDistance = Math.abs(dragOffsetRef.current)
+      
+      if (dragDistance > threshold) {
+        if (dragOffsetRef.current > 0) {
+          // Dragged right - go to previous
+          setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+        } else {
+          // Dragged left - go to next
+          setCurrentIndex((prev) => (prev + 1) % images.length)
+        }
+        setIsPaused(true) // Pause auto-play
+      }
+      
+      setIsDragging(false)
+      setDragOffset(0)
+      dragOffsetRef.current = 0
+    }
+
+    document.addEventListener('mousemove', handleGlobalMouseMove)
+    document.addEventListener('mouseup', handleGlobalMouseUp)
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove)
+      document.removeEventListener('mouseup', handleGlobalMouseUp)
+    }
+  }, [isDragging, dragStartX, images.length])
+
+  // Touch swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (images.length <= 1) return
+    setIsDragging(true)
+    setDragStartX(e.touches[0].clientX)
+    setDragOffset(0)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return
+    e.preventDefault() // Prevent page scrolling during swipe
+    const offset = e.touches[0].clientX - dragStartX
+    setDragOffset(offset)
+  }
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return
+    
+    const threshold = 50 // Minimum swipe distance to trigger navigation
+    const swipeDistance = Math.abs(dragOffset)
+    
+    if (swipeDistance > threshold) {
+      if (dragOffset > 0) {
+        // Swiped right - go to previous
+        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+      } else {
+        // Swiped left - go to next
+        setCurrentIndex((prev) => (prev + 1) % images.length)
+      }
+      setIsPaused(true) // Pause auto-play
+    }
+    
+    setIsDragging(false)
+    setDragOffset(0)
+  }
 
   const renderImage = useCallback(
     (imageSrc: string, index: number) => {
@@ -88,19 +192,31 @@ export const Banner: React.FC<BannerProps> = ({
     [alt, currentIndex, priority]
   )
 
+  // Calculate transform with drag offset (convert pixels to percentage)
+  const containerWidth = containerRef.current?.offsetWidth || 1
+  const transformX = -currentIndex * 100 + (dragOffset / containerWidth) * 100
+
   return (
     <div
+      ref={containerRef}
       className={`relative w-full h-full overflow-hidden ${className}`}
       style={{
         borderRadius: 'inherit', // Inherit border radius from parent card
+        cursor: isDragging ? 'grabbing' : 'grab',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
       }}
       aria-label={`${alt} - Carousel with ${images.length} images`}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div
         className="flex h-full"
         style={{
-          transform: `translateX(-${currentIndex * 100}%)`,
-          transition: prefersReducedMotion
+          transform: `translateX(${transformX}%)`,
+          transition: prefersReducedMotion || isDragging
             ? 'none'
             : 'transform 0.5s ease-in-out',
         }}
@@ -122,7 +238,10 @@ export const Banner: React.FC<BannerProps> = ({
               role="tab"
               aria-label={`Go to slide ${index + 1}`}
               aria-selected={index === currentIndex}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => {
+                setCurrentIndex(index)
+                setIsPaused(true) // Pause auto-play on manual navigation
+              }}
               className={`h-2 rounded-full transition-all ${
                 index === currentIndex
                   ? 'w-8 bg-white'

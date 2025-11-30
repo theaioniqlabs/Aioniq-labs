@@ -465,7 +465,7 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
             }}
           >
             <Banner
-              images={['/assets/banners/Sliding-banner-1.png', '/assets/banners/Sliding-banner-2.png']}
+              images={['/assets/banners/Sliding-banner-1.png', '/assets/banners/Sliding-banner-2.png', '/assets/banners/Sliding-banner-3.png']}
               alt="Product feature banner"
               priority={true}
               className="w-full h-full"

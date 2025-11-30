@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import { Design5Nav } from '@/components/navigation/Design5Nav'
+import { GlowNav } from '@/components/navigation/GlowNav'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { TextBanner } from '@/components/ui/TextBanner'
 import { Footer } from '@/components/ui/footer-section'
@@ -30,7 +30,7 @@ export default function RootLayout({
         <ThemeProvider>
           <section className="relative w-full">
             <TextBanner />
-            <Design5Nav />
+            <GlowNav />
           </section>
           {children}
           <Footer />

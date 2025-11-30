@@ -71,6 +71,9 @@ const config: Config = {
         // Desktop: 12-column implicit grid
         '12': 'repeat(12, minmax(0, 1fr))',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       animation: {
         aurora: 'aurora 60s linear infinite',
         gradient: 'gradient 8s linear infinite',
