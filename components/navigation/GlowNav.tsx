@@ -4,8 +4,6 @@ import React from 'react'
 import { usePathname } from 'next/navigation'
 import { Home, Layers, Cpu, Mail } from 'lucide-react'
 import { MenuBar } from '@/components/ui/glow-menu'
-import Image from 'next/image'
-import Link from 'next/link'
 
 export interface GlowNavProps {
   logo?: string
@@ -77,35 +75,18 @@ export const GlowNav: React.FC<GlowNavProps> = ({
 
   return (
     <nav
-      className={`flex items-center justify-between max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 py-3 sm:py-4 ${className}`}
+      className={`flex items-center justify-center max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 py-3 sm:py-4 ${className}`}
+      style={{ backgroundColor: '#FFFFFF' }}
       role="navigation"
       aria-label="Main navigation"
     >
-      {/* Logo Section - Vertically centered */}
-      <Link
-        href="/"
-        className="flex items-center hover:opacity-70 transition-opacity flex-shrink-0"
-        aria-label="AIONIQ Labs Home"
-      >
-        <Image
-          src={logo}
-          alt={logoAlt}
-          width={135}
-          height={38}
-          className="h-[24px] sm:h-[30px] w-auto"
-          priority
-        />
-      </Link>
-
-      {/* Glow Menu - Responsive on all screen sizes, vertically centered */}
-      <div className="flex-1 flex justify-end items-center">
-        <MenuBar
-          items={menuItems}
-          activeItem={activeItem}
-          onItemClick={handleItemClick}
-          className="scale-90 sm:scale-95 lg:scale-100" // Slightly smaller on mobile/tablet
-        />
-      </div>
+      {/* Glow Menu - Centered on all screen sizes */}
+      <MenuBar
+        items={menuItems}
+        activeItem={activeItem}
+        onItemClick={handleItemClick}
+        className="scale-90 sm:scale-95 lg:scale-100" // Slightly smaller on mobile/tablet
+      />
     </nav>
   )
 }
