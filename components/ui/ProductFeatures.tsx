@@ -5,6 +5,7 @@ import { Zap, Activity, Calendar, Lightbulb, TrendingUp, Settings } from 'lucide
 import { Button } from '@/components/ui/Button'
 import { Banner } from '@/components/ui/Banner'
 import { PageContainer } from '@/components/ui/PageContainer'
+import { DestinationCard } from '@/components/ui/card-21'
 
 export interface ProductFeature {
   id: string
@@ -369,6 +370,23 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
         )
 
       default:
+        // Special case: Replace Zapier Integration with DestinationCard
+        if (feature.id === 'zapier') {
+          return (
+            <div key={feature.id} className={gridClasses.join(' ')} style={{ ...cardStyle, padding: '0', overflow: 'hidden' }}>
+              <DestinationCard
+                imageUrl="https://images.unsplash.com/photo-1526495124232-a04e1849168c?q=80&w=1887"
+                location="Portfolio"
+                flag=""
+                stats=""
+                href={feature.action?.href || '#'}
+                themeColor="250 50% 30%"
+                className="h-full"
+              />
+            </div>
+          )
+        }
+        
         return (
           <div key={feature.id} className={gridClasses.join(' ')} style={cardStyle}>
             <div className="flex flex-col justify-between h-full">
