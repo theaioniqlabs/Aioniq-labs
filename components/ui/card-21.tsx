@@ -42,13 +42,15 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
             style={{ backgroundImage: `url(${imageUrl})` }}
           />
 
-          {/* Themed Gradient Overlay */}
+          {/* Themed Gradient Overlay (disabled to show raw image) */}
+          {/*
           <div
             className="absolute inset-0"
             style={{
               background: `linear-gradient(to top, hsl(var(--theme-color) / 0.9), hsl(var(--theme-color) / 0.6) 30%, transparent 60%)`,
             }}
           />
+          */}
           
           {/* Content */}
           <div className="relative flex flex-col justify-end h-full p-6 text-white">

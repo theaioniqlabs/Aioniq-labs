@@ -18,7 +18,15 @@ const nextConfig = {
         hostname: 'via.placeholder.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'framerusercontent.com',
+        pathname: '/**',
+      },
     ],
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['motion-dom'],
   },
 }
 

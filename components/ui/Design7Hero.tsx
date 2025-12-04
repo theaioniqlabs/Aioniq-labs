@@ -8,10 +8,8 @@ import { PageContainer } from '@/components/ui/PageContainer'
 export interface Design7HeroProps {
   badge?: string
   headline: string
-  emoji?: string
   ctaLabel?: string
   ctaHref?: string
-  userCount?: string
   description?: string
   features?: string[]
   metricTitle?: string
@@ -28,10 +26,8 @@ export interface Design7HeroProps {
 export const Design7Hero: React.FC<Design7HeroProps> = ({
   badge = 'Version 2.0 is here',
   headline,
-  emoji = '💰',
   ctaLabel = 'Get Started',
   ctaHref = '#',
-  userCount = '5000+',
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.',
   features = [
     'Funds are safe by your data security',
@@ -42,13 +38,6 @@ export const Design7Hero: React.FC<Design7HeroProps> = ({
   metricDescription = 'faster',
   className = '',
 }) => {
-  // Avatar colors matching Design 7
-  const avatarColors = [
-    'bg-blue-500',
-    'bg-purple-500',
-    'bg-orange-500',
-    'bg-green-500',
-  ]
 
   return (
     <section
@@ -95,31 +84,24 @@ export const Design7Hero: React.FC<Design7HeroProps> = ({
               </div>
             )}
 
-            {/* Headline with Emoji */}
+            {/* Headline with Ai powered text */}
             <h1
-              className="mb-6 font-heading tracking-tight flex items-start gap-3"
+              className="mb-6 font-heading tracking-tight"
               style={{
                 marginBottom: 'var(--spacing-stack-gap-md)',
                 fontSize: 'clamp(2.25rem, 4vw, 3.75rem)',
                 lineHeight: '1.1',
                 fontWeight: 'var(--typography-h1-weight)',
                 color: 'var(--color-text-primary)',
+                textAlign: 'left',
               }}
             >
-              <span
-                style={{
-                  fontSize: 'clamp(3rem, 6vw, 4.5rem)',
-                  lineHeight: '1',
-                }}
-              >
-                {emoji}
-              </span>
               <span
                 style={{
                   whiteSpace: 'pre-line',
                 }}
               >
-                {headline}
+                Ai powered {headline}
               </span>
             </h1>
 
@@ -134,41 +116,6 @@ export const Design7Hero: React.FC<Design7HeroProps> = ({
             >
               {ctaLabel}
             </Button>
-
-            {/* User Avatars Section */}
-            <div className="mt-8 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {avatarColors.map((color, index) => (
-                  <div
-                    key={index}
-                    className={`w-8 h-8 rounded-full border-2 ${color}`}
-                    style={{
-                      borderColor: 'var(--color-background-primary)',
-                      zIndex: avatarColors.length - index,
-                    }}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-              <div>
-                <p
-                  className="text-sm"
-                  style={{
-                    fontSize: '14px',
-                    lineHeight: '1.5',
-                  }}
-                >
-                  <span
-                    style={{
-                      color: 'var(--color-brand-primary)',
-                      fontWeight: '500',
-                    }}
-                  >
-                    Join {userCount} users
-                  </span>
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Right Column */}

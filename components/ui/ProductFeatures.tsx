@@ -1,11 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Zap, Activity, Calendar, Lightbulb, TrendingUp, Settings } from 'lucide-react'
+import { Zap, Activity, Calendar, Lightbulb, TrendingUp, Settings, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Banner } from '@/components/ui/Banner'
 import { PageContainer } from '@/components/ui/PageContainer'
 import { DestinationCard } from '@/components/ui/card-21'
+import { ArticleCard } from '@/components/ui/blog-post-card'
+import { OnboardingChecklist } from '@/components/ui/onboarding-checklist'
+import GlobeFeatureSection from '@/components/ui/globe-feature-section'
 
 export interface ProductFeature {
   id: string
@@ -130,7 +133,7 @@ const defaultFeatures: ProductFeature[] = [
     icon: null,
     gridSpan: { desktop: { col: 3 } },
     variant: 'wide',
-    bannerImages: ['/assets/banners/Sliding-banner-1.png', '/assets/banners/Sliding-banner-2.png'],
+    bannerImages: ['/assets/banners/banner-ceramix.png', '/assets/banners/banner-metal.png', '/assets/banners/banner-sikkim.png', '/assets/banners/banner-unesco.png'],
   },
 ]
 
@@ -168,6 +171,22 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
       backgroundColor: 'var(--color-background-primary)',
     }
 
+        // Special case: Replace Range Ratio with Blog Post Card
+        if (feature.id === 'range-ratio') {
+          return (
+            <div key={feature.id} className={gridClasses.join(' ')} style={cardStyle}>
+              <ArticleCard
+                headline="Shaping Tomorrow: AI & The Web"
+                excerpt="From automated coding assistants to intelligent design workflows, AI is redefining how developers build and ship modern applications."
+                cover="https://framerusercontent.com/images/HeBZhwOVxQyFU36pkfQyEMExIOg.png?width=8192&height=4608"
+                tag="Innovation"
+                readingTime={420}
+                clampLines={3}
+              />
+            </div>
+          )
+        }
+
     switch (feature.variant) {
       case 'large-number':
         return (
@@ -202,6 +221,20 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
         )
 
       case 'percentage':
+        // Special case: Replace Focusing card with Globe Feature Section
+        if (feature.id === 'focusing') {
+          return (
+            <div key={feature.id} className={gridClasses.join(' ')} style={cardStyle}>
+              <GlobeFeatureSection
+                title="Build with Ruixen UI"
+                description="Empower your team with fast, elegant, and scalable UI components. Ruixen UI brings simplicity and performance to your modern apps."
+                buttonText="Join Today"
+                buttonHref="#"
+              />
+            </div>
+          )
+        }
+        
         return (
           <div key={feature.id} className={gridClasses.join(' ')} style={cardStyle}>
             <div className="flex items-end justify-between">
@@ -311,6 +344,38 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
         )
 
       case 'wide':
+        // Special case: Replace shortcuts card with OnboardingChecklist
+        if (feature.id === 'shortcuts') {
+          return (
+            <div key={feature.id} className={gridClasses.join(' ')} style={cardStyle}>
+              <OnboardingChecklist
+                title="Get Started - It only takes 10 minutes"
+                description="Please keep these documents and details ready for a smooth sign-up"
+                items={[
+                  { id: 1, text: "PAN card" },
+                  { id: 2, text: "GST number, if applicable" },
+                  {
+                    id: 3,
+                    text: "FSSAI license",
+                    helperText: "Don't have a FSSAI license?",
+                    helperLink: { href: "#", text: "Apply here" },
+                  },
+                  {
+                    id: 4,
+                    text: "Menu & profile food image",
+                    helperText: "What is profile food image?",
+                    helperLink: { href: "#", text: "Refer here" },
+                  },
+                  { id: 5, text: "Bank account details" },
+                ]}
+                videoThumbnailUrl="https://images.unsplash.com/photo-1526495124232-a04e1849168c?q=80&w=1887"
+                videoUrl="https://www.youtube.com/embed/3yBgLxgwS1U?si=_MZFE2nm9fevcj76&t=30"
+                className="h-full"
+              />
+            </div>
+          )
+        }
+        
         // Render the default wide variant content (banner removed, container card kept)
         return (
           <div key={feature.id} className={gridClasses.join(' ')} style={cardStyle}>
@@ -383,6 +448,51 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
                 themeColor="250 50% 30%"
                 className="h-full"
               />
+            </div>
+          )
+        }
+        
+        // Special case: Team's Productivity card with white text
+        if (feature.id === 'productivity') {
+          return (
+            <div key={feature.id} className={gridClasses.join(' ')} style={{ ...cardStyle, padding: '0', overflow: 'hidden', backgroundColor: '#1F2937' }}>
+              <div style={{ padding: 'var(--card-padding)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%' }}>
+                <div>
+                  <h3
+                    className="mb-3 font-heading"
+                    style={{
+                      fontSize: 'var(--typography-h4-size-desktop)',
+                      lineHeight: 'var(--typography-h4-line-height-desktop)',
+                      fontWeight: 'var(--typography-h4-weight)',
+                      color: '#ffffff',
+                    }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p
+                    className="font-body"
+                    style={{
+                      fontSize: 'var(--typography-body-size-desktop)',
+                      lineHeight: 'var(--typography-body-line-height-desktop)',
+                      fontWeight: 'var(--typography-body-weight)',
+                      color: '#ffffff',
+                    }}
+                  >
+                    {feature.description}
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  className="mt-8 flex items-center justify-between bg-[rgba(221,74,255,0.2)] backdrop-blur-md border border-[rgba(221,74,255,0.3)] rounded-lg px-4 py-3 transition-all duration-300 hover:bg-[rgba(221,74,255,0.4)] hover:border-[rgba(221,74,255,0.5)] group"
+                  style={{
+                    marginTop: 'var(--spacing-stack-gap-md)',
+                    borderRadius: 'var(--radii-button-default)',
+                  }}
+                >
+                  <span className="text-sm font-semibold tracking-wide" style={{ color: '#ffffff' }}>Explore Now</span>
+                  <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" style={{ color: '#ffffff' }} />
+                </a>
+              </div>
             </div>
           )
         }
@@ -483,7 +593,12 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
             }}
           >
             <Banner
-              images={['/assets/banners/Sliding-banner-1.png', '/assets/banners/Sliding-banner-2.png', '/assets/banners/Sliding-banner-3.png']}
+              images={[
+                '/assets/banners/banner-ceramix.png',
+                '/assets/banners/banner-metal.png',
+                '/assets/banners/banner-sikkim.png',
+                '/assets/banners/banner-unesco.png'
+              ]}
               alt="Product feature banner"
               priority={true}
               className="w-full h-full"

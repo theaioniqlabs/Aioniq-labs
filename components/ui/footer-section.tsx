@@ -4,18 +4,8 @@ import type { ComponentProps, ReactNode } from 'react'
 import { FacebookIcon, FrameIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from 'lucide-react'
 import { PageContainer } from '@/components/ui/PageContainer'
 
-// Try to import motion, fallback to null if not available
-let motion: any = null
-let useReducedMotion: (() => boolean) | null = null
-
-try {
-  const motionModule = require('motion/react')
-  motion = motionModule.motion
-  useReducedMotion = motionModule.useReducedMotion
-} catch (e) {
-  // Motion package not installed, will use CSS animations instead
-  console.warn('motion package not found, using CSS animations fallback')
-}
+// Use framer-motion for animations
+import { motion } from 'framer-motion'
 
 interface FooterLink {
   title: string
@@ -255,8 +245,8 @@ function AnimatedContainer({ className, delay = 0.1, children, style }: ViewAnim
     }
   }, [shouldReduceMotion])
 
-  // Use motion if available and motion is not null
-  if (motion && !shouldReduceMotion) {
+  // Use framer-motion for animations if reduced motion is not preferred
+  if (!shouldReduceMotion) {
     return (
       <motion.div
         initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
