@@ -38,7 +38,7 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
         paddingTop: 'var(--spacing-section-vertical-desktop)',
         paddingBottom: 'var(--spacing-section-vertical-desktop)',
         borderTopColor: 'var(--color-button-secondary-border)',
-        backgroundColor: '#000000', // Pure black background
+        backgroundColor: '#FFFFFF', // White background
       }}
     >
       <PageContainer>
@@ -70,7 +70,7 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
                     fontSize: 'var(--typography-body-small-size-desktop)',
                     lineHeight: 'var(--typography-body-small-line-height)',
                     fontWeight: 'var(--typography-body-small-weight)',
-                    color: '#FFFFFF', // White text
+                    color: '#000000', // Black text
                   }}
                 >
                   {badge}
@@ -86,7 +86,7 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
                 fontSize: 'clamp(2.25rem, 4vw, 3.75rem)',
                 lineHeight: '1.1',
                 fontWeight: 'var(--typography-h1-weight)',
-                color: '#FFFFFF', // White text
+                color: '#000000', // Black text
                 letterSpacing: '-0.02em',
               }}
             >
@@ -101,7 +101,7 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
                 fontSize: 'clamp(1.125rem, 2vw, 1.25rem)',
                 lineHeight: '1.6',
                 fontWeight: 'var(--typography-body-weight)',
-                color: '#FFFFFF', // White text
+                color: '#000000', // Black text
               }}
             >
               {description}

@@ -14,9 +14,8 @@ export function AboutSection() {
     <div
       className="w-full"
       style={{
-        marginTop: '96px', // mt-24
-        paddingTop: '64px', // pt-16
-        borderTop: '1px solid hsl(var(--border))',
+        paddingTop: 'var(--spacing-section-vertical-desktop)',
+        paddingBottom: 'var(--spacing-section-vertical-desktop)',
       }}
     >
       <div
