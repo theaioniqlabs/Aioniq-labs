@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface GlobeFeatureSectionProps {
@@ -44,13 +42,6 @@ export default function GlobeFeatureSection({
         >
           {description}
         </p>
-        <Button
-          variant="primary"
-          href={buttonHref}
-          className="mt-4 inline-flex items-center gap-2 rounded-full"
-        >
-          {buttonText} <ArrowRight className="h-4 w-4" />
-        </Button>
       </div>
     </div>
   );

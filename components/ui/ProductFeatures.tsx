@@ -366,7 +366,6 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
                     helperText: "What is profile food image?",
                     helperLink: { href: "#", text: "Refer here" },
                   },
-                  { id: 5, text: "Bank account details" },
                 ]}
                 videoThumbnailUrl="https://images.unsplash.com/photo-1526495124232-a04e1849168c?q=80&w=1887"
                 videoUrl="https://www.youtube.com/embed/3yBgLxgwS1U?si=_MZFE2nm9fevcj76&t=30"
@@ -481,17 +480,17 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
                     {feature.description}
                   </p>
                 </div>
-                <a
+                <Button
                   href="#"
-                  className="mt-8 flex items-center justify-between bg-[rgba(221,74,255,0.2)] backdrop-blur-md border border-[rgba(221,74,255,0.3)] rounded-lg px-4 py-3 transition-all duration-300 hover:bg-[rgba(221,74,255,0.4)] hover:border-[rgba(221,74,255,0.5)] group"
+                  variant="secondary"
+                  className="w-auto self-start mt-8 flex items-center gap-2"
                   style={{
                     marginTop: 'var(--spacing-stack-gap-md)',
-                    borderRadius: 'var(--radii-button-default)',
                   }}
                 >
-                  <span className="text-sm font-semibold tracking-wide" style={{ color: '#ffffff' }}>Explore Now</span>
-                  <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" style={{ color: '#ffffff' }} />
-                </a>
+                  <span>Explore Now</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
               </div>
             </div>
           )
@@ -535,26 +534,21 @@ export const ProductFeatures: React.FC<ProductFeaturesProps> = ({
                 </p>
               </div>
               {feature.action && (
-                <button
-                  className="mt-6 px-4 py-2 bg-accent rounded-lg flex items-center gap-2 text-sm hover:bg-accent/80 transition-colors w-fit"
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  href={feature.action.href}
+                  onClick={feature.action.onClick}
+                  className="mt-6 w-fit flex items-center gap-2"
                   style={{
                     marginTop: 'var(--spacing-stack-gap-md)',
-                    paddingLeft: 'var(--spacing-stack-gap-md)',
-                    paddingRight: 'var(--spacing-stack-gap-md)',
-                    paddingTop: 'var(--spacing-stack-gap-sm)',
-                    paddingBottom: 'var(--spacing-stack-gap-sm)',
-                    borderRadius: 'var(--radii-button-default)',
-                    backgroundColor: 'var(--color-background-secondary)',
-                    fontSize: 'var(--typography-body-small-size-desktop)',
-                    color: 'var(--color-text-primary)',
                   }}
-                  onClick={() => feature.action?.onClick?.() || (feature.action?.href && (window.location.href = feature.action.href))}
                 >
                   {feature.action.label === 'Configure' && (
                     <Settings className="w-4 h-4 text-orange-500" aria-hidden="true" />
                   )}
                   {feature.action.label}
-                </button>
+                </Button>
               )}
             </div>
           </div>

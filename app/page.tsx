@@ -13,7 +13,7 @@ export default function Home() {
         ctas={[
           {
             label: 'Start a Project',
-            href: '#',
+            href: '/contact',
             variant: 'primary',
           },
           {

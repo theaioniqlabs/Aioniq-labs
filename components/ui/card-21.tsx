@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 // Define the props for the DestinationCard component
 interface DestinationCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -60,13 +61,21 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
             <p className="text-sm text-white/80 mt-1 font-medium">{stats}</p>
 
             {/* Explore Button */}
-            <div className="mt-8 flex items-center justify-between bg-[hsl(var(--theme-color)/0.2)] backdrop-blur-md border border-[hsl(var(--theme-color)/0.3)] 
-                           rounded-lg px-4 py-3 
-                           transition-all duration-300 
-                           group-hover:bg-[hsl(var(--theme-color)/0.4)] group-hover:border-[hsl(var(--theme-color)/0.5)]">
-              <span className="text-sm font-semibold tracking-wide">Explore Now</span>
-              <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
-            </div>
+            <Button
+              variant="secondary"
+              as="button"
+              className="w-auto self-start mt-8 flex items-center gap-2"
+              style={{
+                marginTop: 'var(--spacing-stack-gap-md)',
+              }}
+              onClick={(e) => {
+                e.stopPropagation()
+                window.location.href = href
+              }}
+            >
+              <span>Explore Now</span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Button>
           </div>
         </a>
       </div>

@@ -32,7 +32,7 @@ export default function RootLayout({
             <TextBanner />
             <Design9Nav />
           </section>
-          <div className="pt-16 lg:pt-16 pb-16 lg:pb-0">
+          <div>
             {children}
           </div>
           <Footer />

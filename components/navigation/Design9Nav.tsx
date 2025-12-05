@@ -82,8 +82,8 @@ export const Design9Nav: React.FC<Design9NavProps> = ({
                     href={item.href}
                     className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 ${
                       isActive
-                        ? 'bg-primary text-primary-foreground'
-                        : 'text-foreground/60 hover:text-foreground hover:bg-accent'
+                        ? 'bg-black text-white'
+                        : 'text-foreground/60 hover:text-foreground hover:bg-[#F3F4F6]'
                     }`}
                     aria-current={isActive ? 'page' : undefined}
                   >

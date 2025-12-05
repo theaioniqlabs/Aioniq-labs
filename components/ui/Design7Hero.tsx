@@ -110,7 +110,6 @@ export const Design7Hero: React.FC<Design7HeroProps> = ({
               href={ctaHref}
               variant="primary"
               style={{
-                borderRadius: 'var(--radii-button-default)',
                 marginBottom: '32px',
               }}
             >

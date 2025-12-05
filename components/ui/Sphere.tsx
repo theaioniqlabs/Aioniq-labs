@@ -191,7 +191,7 @@ export function Sphere({ width = 420, height = 420, className = '' }: SphereProp
   }, [width, height])
 
   return (
-    <div className={className} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+    <div className={className} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '50px' }}>
       <canvas ref={canvasRef} style={{ maxWidth: '100%', height: 'auto' }} />
     </div>
   )

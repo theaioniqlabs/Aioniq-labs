@@ -33,11 +33,10 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
 }) => {
   return (
     <section
-      className={`w-full border-t border-border ${className}`}
+      className={`w-full ${className}`}
       style={{
         paddingTop: 'var(--spacing-section-vertical-desktop)',
         paddingBottom: 'var(--spacing-section-vertical-desktop)',
-        borderTopColor: 'var(--color-button-secondary-border)',
         backgroundColor: '#FFFFFF', // White background
       }}
     >
@@ -109,7 +108,7 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-col sm:flex-row"
+              className="flex flex-row"
               style={{
                 gap: 'var(--spacing-stack-gap-md)',
               }}
@@ -119,9 +118,7 @@ export const Design4Hero: React.FC<Design4HeroProps> = ({
                   key={index}
                   href={cta.href}
                   variant={cta.variant}
-                  style={{
-                    borderRadius: 'var(--radii-button-default)',
-                  }}
+                  className="w-auto self-start"
                 >
                   {cta.label}
                 </Button>
